@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JavaScript数组方法总结">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数组方法总结">
+<meta property="og:url" content="http://lanweifa.cn/2017/12/03/JavaScript数组方法总结/index.html">
+<meta property="og:site_name" content="Scapelan&#39;Blog">
+<meta property="og:description" content="JavaScript数组方法总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-04T06:44:26.592Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript数组方法总结">
+<meta name="twitter:description" content="JavaScript数组方法总结">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lanweifa.cn/2017/12/03/JavaScript数组方法总结/"/>
+
+
+
+
+
+  <title>JavaScript数组方法总结 | Scapelan'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Scapelan'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lanweifa.cn/2017/12/03/JavaScript数组方法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Scapelan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Scapelan'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript数组方法总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-03T20:47:55+08:00">
+                2017-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/03/JavaScript数组方法总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/03/JavaScript数组方法总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScript数组方法总结<br><a id="more"></a></p>
+<h1 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h1><ol>
+<li>join()</li>
+<li>reverse()</li>
+<li>sort()</li>
+<li>concat()</li>
+<li>slice()</li>
+<li>splice()</li>
+<li>push()和pop()\</li>
+<li>unshift()和shift()</li>
+<li>toString()和toLocaleString()</li>
+<li>forEach()</li>
+<li>map()</li>
+<li>filter()</li>
+<li>every()和some()</li>
+<li>reduce()和reduceRight</li>
+<li>indexOf()和lastIndexOf()</li>
+</ol>
+<h1 id="1-join"><a href="#1-join" class="headerlink" title="1. join()"></a>1. join()</h1><p>join()方法将数组中所有元素转化成字符串并连接在一起，参数可指定分隔符，如参数为空，默认逗号为分隔符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">a.join(); <span class="comment">//=&gt;"1,2,3"</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="2-reverse"><a href="#2-reverse" class="headerlink" title="2. reverse()"></a>2. reverse()</h1><p>reverse()方法返回原数组逆序排列后的数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">a.reverse(); <span class="comment">//a是[3,2,1]</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="3-sort"><a href="#3-sort" class="headerlink" title="3.sort()"></a>3.sort()</h1><p>返回原数组排序后的数组，不加参数时按照ASCII表顺序排列，按其他顺序排列时必须传入一个比较函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">33</span>, <span class="number">4</span>, <span class="number">1111</span>, <span class="number">222</span>];</span><br><span class="line">a.sort(); <span class="comment">//=&gt; [1111, 222, 33, 4]</span></span><br><span class="line"><span class="comment">//从小到大排</span></span><br><span class="line">a.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a-b;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//从小到大，另一种方法</span></span><br><span class="line">a.sort(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (x &lt; y)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (x &gt; y)&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h1 id="4-concat"><a href="#4-concat" class="headerlink" title="4.concat"></a>4.concat</h1><p>返回一个新数组，新数组的元素包括原始数组的元素和concat()的参数，如果参数为数组，连接的数组的元素，但concat()不会递归扁平化数组的数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">a.concat(<span class="number">4</span>, <span class="number">5</span>); <span class="comment">//返回[1,2,3,4,5]</span></span><br><span class="line">a.concat([<span class="number">4</span>, <span class="number">5</span>]); <span class="comment">//返回[1,2,3,4,5];</span></span><br><span class="line">a.concat([<span class="number">4</span>,[<span class="number">5</span>,[<span class="number">6</span>,<span class="number">7</span>]]); <span class="comment">//返回[1,2,3,4,5,[6, 7]]</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="5-slice"><a href="#5-slice" class="headerlink" title="5.slice()"></a>5.slice()</h1><p>返回数组的一个片段，返回的数组从第一个参数指定的位置到第二个参数-1的位置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">a.slice(<span class="number">0</span>,<span class="number">3</span>); <span class="comment">//返回[1,2,3]</span></span><br><span class="line">a.slice(<span class="number">3</span>); <span class="comment">//返回[4,5]</span></span><br><span class="line">a.slice(<span class="number">1</span>,<span class="number">-1</span>) <span class="comment">//返回[2,3，4] 参数-1时表示倒数第一个元素</span></span><br><span class="line">a.slice(<span class="number">-3</span>,<span class="number">-2</span>) <span class="comment">//返回[3]</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="6-splice"><a href="#6-splice" class="headerlink" title="6.splice()"></a>6.splice()</h1><p>返回被删除的数组，第一个元素指定删除和插入的起始位置，第二个参数指定了要删除元素的个数，后面的参数指定需要插入到数组中的元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>];</span><br><span class="line">a.splice(<span class="number">4</span>); <span class="comment">//返回[5,6,7,8],a是[1,2,3,4]</span></span><br><span class="line">a.splice(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//返回[2,3],a是[1,4]</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">a.splice(<span class="number">2</span>,<span class="number">0</span>,<span class="string">'a'</span>,<span class="string">'b'</span>); <span class="comment">//返回的是[],a是[1,2,'a','b',3,4,5]</span></span><br><span class="line">a.splice(<span class="number">2</span>,<span class="number">2</span>,[<span class="number">1</span>,<span class="number">2</span>],<span class="number">3</span>); <span class="comment">//返回的是['a','b'],a是[1,2,[1,2],3,3,4,5]</span></span><br></pre></td></tr></table></figure>
+<h1 id="7-push-和pop"><a href="#7-push-和pop" class="headerlink" title="7.push()和pop()"></a>7.push()和pop()</h1><p>push()在数组尾部添加一个或多个元素，并返回数组新的长度<br>pop()删除数组最后一个元素，并返回删除的值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stack = [];</span><br><span class="line">stack.push(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//stack:[1,2] 返回2</span></span><br><span class="line">stack.pop(); <span class="comment">//stack:[1] 返回2</span></span><br><span class="line">stack.push(<span class="number">3</span>); <span class="comment">//stack:[1,3] 返回2</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="8-unshift-和shift"><a href="#8-unshift-和shift" class="headerlink" title="8.unshift()和shift()"></a>8.unshift()和shift()</h1><p>unshift()在数组的头部增加一个或多个元素，并返回数组新的长度<br>shift()删除数组第一个元素并将其返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>];</span><br><span class="line">a.unshift(<span class="number">22</span>); <span class="comment">//a:[22,1] 返回2</span></span><br><span class="line">a.shift(); <span class="comment">//a:[1] 返回22</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="9-toString-和toLocaleString"><a href="#9-toString-和toLocaleString" class="headerlink" title="9.toString()和toLocaleString()"></a>9.toString()和toLocaleString()</h1><p>toString()将每个元素转化为字符串,输出用逗号分隔的字符串列表<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].toString() <span class="comment">//生成'1,2,3'</span></span><br><span class="line">[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>].toString() <span class="comment">//生成'a,b,c'</span></span><br><span class="line">[<span class="number">1</span>,[<span class="number">2</span>,<span class="string">'c'</span>]].toString() <span class="comment">//生成'1,2,c'</span></span><br></pre></td></tr></table></figure></p>
+<p>toLocaleString()是toString()方法的本地化版本，它调用元素的toLocaleString()将每个元素转化为字符串</p>
+<h1 id="10-forEach"><a href="#10-forEach" class="headerlink" title="10.forEach()"></a>10.forEach()</h1><p>从头至尾遍历数组，为每个元素调用指定的函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">data.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">    sum += value;</span><br><span class="line">&#125;);</span><br><span class="line">sum   <span class="comment">//=&gt;15</span></span><br><span class="line"><span class="comment">//每个数组元素的值自加1</span></span><br><span class="line">data.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v,i,a</span>)</span>&#123;</span><br><span class="line">    a[i] = v + <span class="number">1</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h1 id="11-map"><a href="#11-map" class="headerlink" title="11.map()"></a>11.map()</h1><p>将数组的每个元素传递给指定的函数，并返回一个包含该函数返回值的数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">b = a.map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x*x;</span><br><span class="line">&#125;); <span class="comment">//b是[1,4,9]</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="12-filter"><a href="#12-filter" class="headerlink" title="12.filter()"></a>12.filter()</h1><p>filter()方法返回的数组是调用的数组的一个子集，传递进的函数用来逻辑判定，如果返回值为true或能转化为true的值，那么将传递给判定函数的这个元素放入这个子集<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line">smallvalues = a.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x&lt;<span class="number">3</span></span><br><span class="line">&#125;); <span class="comment">//[2,1]</span></span><br><span class="line">everyother = a.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x,i</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i%<span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">&#125;); <span class="comment">//[5,3,1]</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="13-every-和some"><a href="#13-every-和some" class="headerlink" title="13.every()和some()"></a>13.every()和some()</h1><p>every()和some()方法是数组的逻辑判定，every()是当所有元素调用判定函数都返回true，它才返回true，some()是只要有一个元素调用判定函数返回true，它就返回true<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">a.every(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &lt; <span class="number">10</span>;</span><br><span class="line">&#125;); <span class="comment">//true: 所有的值都小于10</span></span><br><span class="line">a.some(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x%<span class="number">2</span>===<span class="number">0</span>;</span><br><span class="line">&#125;; <span class="comment">//true: a含有偶数</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="14-reduce-和reduceRight"><a href="#14-reduce-和reduceRight" class="headerlink" title="14.reduce()和reduceRight()"></a>14.reduce()和reduceRight()</h1><p>reduce()方法将数组中的每一个元素按照回调函数的运算方式进行运算，生成单个值，第一个参数为回调函数，第二个参数为初始值，初始值省略时，使用数组的第一个元素作为初始值。reduceRight()从右到左化简数组。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> sum = a.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y</span><br><span class="line">&#125;, <span class="number">0</span>) <span class="comment">//数组求和</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="15-indexOf-和lastIndexOf"><a href="#15-indexOf-和lastIndexOf" class="headerlink" title="15.indexOf()和lastIndexOf()"></a>15.indexOf()和lastIndexOf()</h1><p>搜索整个数组中有给定值的元素，并返回找到的第一个元素的索引，如果没找到就返回-1，indexOf()从头至尾搜索，lastIndexOf()则反向搜索，第一个参数是需要搜索的值，第二个参数（可选）表示开始搜索的位置的索引。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在数组中查找所有出现的x，并返回一个包含匹配索引的数组</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findall</span>(<span class="params">a, x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> results = [];</span><br><span class="line">    len = a.length;</span><br><span class="line">    pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(pos &lt; len)&#123;</span><br><span class="line">        pos = a.indexOf(x,pos);</span><br><span class="line">        <span class="keyword">if</span> (pos === <span class="number">-1</span>) <span class="keyword">break</span>;</span><br><span class="line">        results.push(pos);</span><br><span class="line">        pos = pos + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> results;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/23/使用Hexo+GitHub快速搭建个人博客/" rel="next" title="使用Hexo+GitHub快速搭建个人博客">
+                <i class="fa fa-chevron-left"></i> 使用Hexo+GitHub快速搭建个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/09/GitHub-commit-message 也卖萌/" rel="prev" title="GitHub commit message 也卖萌">
+                GitHub commit message 也卖萌 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Scapelan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数组的方法"><span class="nav-number">1.</span> <span class="nav-text">数组的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-join"><span class="nav-number">2.</span> <span class="nav-text">1. join()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-reverse"><span class="nav-number">3.</span> <span class="nav-text">2. reverse()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-sort"><span class="nav-number">4.</span> <span class="nav-text">3.sort()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-concat"><span class="nav-number">5.</span> <span class="nav-text">4.concat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-slice"><span class="nav-number">6.</span> <span class="nav-text">5.slice()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-splice"><span class="nav-number">7.</span> <span class="nav-text">6.splice()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-push-和pop"><span class="nav-number">8.</span> <span class="nav-text">7.push()和pop()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-unshift-和shift"><span class="nav-number">9.</span> <span class="nav-text">8.unshift()和shift()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-toString-和toLocaleString"><span class="nav-number">10.</span> <span class="nav-text">9.toString()和toLocaleString()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-forEach"><span class="nav-number">11.</span> <span class="nav-text">10.forEach()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-map"><span class="nav-number">12.</span> <span class="nav-text">11.map()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-filter"><span class="nav-number">13.</span> <span class="nav-text">12.filter()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-every-和some"><span class="nav-number">14.</span> <span class="nav-text">13.every()和some()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14-reduce-和reduceRight"><span class="nav-number">15.</span> <span class="nav-text">14.reduce()和reduceRight()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15-indexOf-和lastIndexOf"><span class="nav-number">16.</span> <span class="nav-text">15.indexOf()和lastIndexOf()</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Scapelan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://lanweifa.cn/2017/12/03/JavaScript数组方法总结/';
+          this.page.identifier = '2017/12/03/JavaScript数组方法总结/';
+          this.page.title = 'JavaScript数组方法总结';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
